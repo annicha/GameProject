@@ -34,56 +34,55 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    func checkHorizontal(button: UIButton) -> Bool {
-        let letter = button.accessibilityIdentifier?.first
-        let num = button.accessibilityIdentifier?.last
+    func checkHorizontal(position: String) -> Bool {
+        let letter = position.first
+        let num = position.last
         var check = ""
         for i in letterArray where i != String(letter!) {
-            var stringNum = String(num!)
-            stringNum.insert(Character(i), at: stringNum.startIndex)
+            var tag = String(num!)
+            tag.insert(Character(i), at: tag.startIndex)
             if check == "" {
-                check = ViewController.dic[stringNum]!
+                check = ViewController.dic[tag]!
             } else {
-                let result = check == ViewController.dic[stringNum]! ? true : false
+                let result = check == ViewController.dic[tag]! ? true : false
+                if result {
+                    return check == ViewController.dic[position] ? true : false
+                }
                 return result
             }
         }
         return false
     }
     
-    func checkVertical(button: UIButton) -> Bool {
-        let letter = button.accessibilityIdentifier?.first
-        let num = button.accessibilityIdentifier?.last
+    func checkVertical(position: String) -> Bool {
+        let letter = position.first
+        let num = position.last
         var check = ""
         for i in numArray where i != String(num!) {
-            var stringLetter = String(letter!)
-            stringLetter.insert(Character(i), at: stringLetter.endIndex)
+            var tag = String(letter!)
+            tag.insert(Character(i), at: tag.endIndex)
             if check == "" {
-                check = ViewController.dic[stringLetter]!
+                check = ViewController.dic[tag]!
             } else {
-                let result = check == ViewController.dic[stringLetter]! ? true : false
+                let result = check == ViewController.dic[tag]! ? true : false
+                if result {
+                    return check == ViewController.dic[position] ? true : false
+                }
                 return result
             }
         }
         return false
     }
     
-    func checkDiagonal(button: UIButton) -> Bool {
-        let letter = button.accessibilityIdentifier?.first
-        let num = button.accessibilityIdentifier?.last
+    func checkDiagonal(position: String) -> Bool {
+        let letter = position.first
+        let num = position.last
         var check = ""
-        var token = 0
-        if button.accessibilityIdentifier == "b2" {
-            for i in letterArray where i != String(letter!) {
-                token += 1
-                for number in numArray where number != String(num!) && number != "2" {
-                    var stringNum = String(letter!)
-                    stringNum.insert(Character(number), at: stringNum.endIndex)
-                    let result = check == ViewController.dic[stringNum]! ? true : false
-                    if token == 2 {
-                        return result
-                    }
-                }
+        if position == "b2" {
+            if ViewController.dic["a1"] == ViewController.dic["c3"] && ViewController.dic["a1"] == ViewController.dic["b2"] {
+                return true
+            } else if ViewController.dic["a3"] == ViewController.dic["c1"] && ViewController.dic["a3"] == ViewController.dic["b2"] {
+                return true
             }
         } else {
             for i in letterArray where i != String(letter!) {
@@ -91,9 +90,12 @@ class ViewController: UIViewController {
                     check = ViewController.dic["b2"]!
                 } else {
                     for number in numArray where number != String(num!) && number != "2" {
-                        var stringNum = String(letter!)
-                        stringNum.insert(Character(number), at: stringNum.endIndex)
-                        let result = check == ViewController.dic[stringNum]! ? true : false
+                        var tag = String(i)
+                        tag.insert(Character(number), at: tag.endIndex)
+                        let result = check == ViewController.dic[tag]! ? true : false
+                        if result {
+                            return check == ViewController.dic[position] ? true : false
+                        }
                         return result
                     }
                 }
