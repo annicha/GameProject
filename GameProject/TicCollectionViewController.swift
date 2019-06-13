@@ -51,7 +51,11 @@ extension TicCollectionViewController: UICollectionViewDelegate, UICollectionVie
 
 extension TicCollectionViewController: TickCollectionViewCellDelegate {
     func checkWinner(positionLabel: String?) {
-        guard let positionLabel = positionLabel else { print("can't find position label"); return }
+        guard let positionLabel = positionLabel,
+            !ViewController.hasWon
+            else { print("can't find position label or someone has won"); return }
+        
+        updatePlayersTurnText()
         
         let checker = ViewController()
         
