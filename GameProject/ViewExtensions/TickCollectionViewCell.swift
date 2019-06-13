@@ -29,8 +29,8 @@ class TickCollectionViewCell: UICollectionViewCell {
     var positionLabel: String?
     var delegate: TickCollectionViewCellDelegate?
     
-    lazy var tickButton: TickButton = {
-        let button = TickButton()
+    lazy var tickButton: UIButton = {
+        let button = UIButton()
         return button
     }()
     

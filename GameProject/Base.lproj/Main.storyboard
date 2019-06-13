@@ -73,14 +73,17 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It's now X's turn." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2x-Ns-n6I">
-                                <rect key="frame" x="75" y="43.5" width="170.5" height="26.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <rect key="frame" x="63.5" y="30" width="193.5" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kHI-Ut-SJz">
-                                <rect key="frame" x="10" y="422" width="300" height="30"/>
+                                <rect key="frame" x="10" y="422" width="300" height="50"/>
                                 <color key="backgroundColor" red="0.88840418779999997" green="0.39324671900000002" blue="0.34577830329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="SHn-6a-wlf"/>
+                                </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Clear"/>
                                 <connections>
@@ -94,7 +97,7 @@
                             <constraint firstItem="kHI-Ut-SJz" firstAttribute="width" secondItem="lTE-Xv-fNH" secondAttribute="width" id="11H-S0-9Mp"/>
                             <constraint firstItem="kHI-Ut-SJz" firstAttribute="top" secondItem="lTE-Xv-fNH" secondAttribute="bottom" constant="22" id="3Xm-Im-aV9"/>
                             <constraint firstItem="kHI-Ut-SJz" firstAttribute="centerX" secondItem="2wp-7Y-iHt" secondAttribute="centerX" id="K6W-yQ-pzs"/>
-                            <constraint firstItem="lTE-Xv-fNH" firstAttribute="top" secondItem="h2x-Ns-n6I" secondAttribute="bottom" constant="30" id="mZC-Le-4oY"/>
+                            <constraint firstItem="lTE-Xv-fNH" firstAttribute="top" secondItem="h2x-Ns-n6I" secondAttribute="bottom" constant="40" id="mZC-Le-4oY"/>
                             <constraint firstItem="ZGb-ld-4ej" firstAttribute="centerX" secondItem="3oq-2z-hn0" secondAttribute="centerX" id="oBi-Kp-ykZ"/>
                             <constraint firstItem="ZGb-ld-4ej" firstAttribute="centerY" secondItem="3oq-2z-hn0" secondAttribute="centerY" id="stb-PT-Gg2"/>
                         </constraints>
