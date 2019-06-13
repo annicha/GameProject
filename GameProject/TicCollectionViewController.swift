@@ -49,6 +49,12 @@ class TicCollectionViewController: UIViewController {
     }
     
     func resetGame(){
+        
+        ViewController.playerOneTurn = true
+        ViewController.playerTwoTurn = false
+        self.turnCount = ViewController.dic.count
+        updatePlayersTurnText()
+        
         for (key, _) in ViewController.dic {
             ViewController.dic[key] = ""
             print(ViewController.dic)
@@ -57,9 +63,6 @@ class TicCollectionViewController: UIViewController {
                 self.playerTurnText = "x"
             }
         }
-        
-        self.turnCount = ViewController.dic.count
-        updatePlayersTurnText()
     }
 
 }
