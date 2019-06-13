@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		977169C622B20C7D009D9DB6 /* TicCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977169C522B20C7D009D9DB6 /* TicCollectionViewController.swift */; };
-		977169C822B221C0009D9DB6 /* TickCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977169C722B221C0009D9DB6 /* TickCollectionViewCell.swift */; };
+		977169C822B221C0009D9DB6 /* TicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977169C722B221C0009D9DB6 /* TicCollectionViewCell.swift */; };
 		977169CA22B22230009D9DB6 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977169C922B22230009D9DB6 /* UIViewExtension.swift */; };
 		97AE031522B1799200A6D4E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE031422B1799200A6D4E1 /* AppDelegate.swift */; };
 		97AE031722B1799200A6D4E1 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE031622B1799200A6D4E1 /* GameController.swift */; };
@@ -19,15 +19,15 @@
 
 /* Begin PBXFileReference section */
 		977169C522B20C7D009D9DB6 /* TicCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicCollectionViewController.swift; sourceTree = "<group>"; };
-		977169C722B221C0009D9DB6 /* TickCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickCollectionViewCell.swift; sourceTree = "<group>"; };
+		977169C722B221C0009D9DB6 /* TicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicCollectionViewCell.swift; sourceTree = "<group>"; };
 		977169C922B22230009D9DB6 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		97AE031122B1799200A6D4E1 /* GameProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		97AE031422B1799200A6D4E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		97AE031422B1799200A6D4E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../AppDelegate.swift; sourceTree = "<group>"; };
 		97AE031622B1799200A6D4E1 /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		97AE031922B1799200A6D4E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		97AE031B22B1799500A6D4E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		97AE031B22B1799500A6D4E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		97AE031E22B1799500A6D4E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		97AE032022B1799500A6D4E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		97AE032022B1799500A6D4E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +41,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		977169CB22B305D7009D9DB6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				97AE031D22B1799500A6D4E1 /* LaunchScreen.storyboard */,
+				97AE031422B1799200A6D4E1 /* AppDelegate.swift */,
+				97AE031B22B1799500A6D4E1 /* Assets.xcassets */,
+				97AE032022B1799500A6D4E1 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		977169CC22B3063E009D9DB6 /* View + Controller */ = {
+			isa = PBXGroup;
+			children = (
+				977169C522B20C7D009D9DB6 /* TicCollectionViewController.swift */,
+				977169C722B221C0009D9DB6 /* TicCollectionViewCell.swift */,
+				97AE032A22B1BC8200A6D4E1 /* ViewExtensions */,
+			);
+			path = "View + Controller";
+			sourceTree = "<group>";
+		};
+		977169CD22B30660009D9DB6 /* Model + Controller */ = {
+			isa = PBXGroup;
+			children = (
+				97AE031622B1799200A6D4E1 /* GameController.swift */,
+			);
+			path = "Model + Controller";
+			sourceTree = "<group>";
+		};
 		97AE030822B1799200A6D4E1 = {
 			isa = PBXGroup;
 			children = (
@@ -60,14 +89,10 @@
 		97AE031322B1799200A6D4E1 /* GameProject */ = {
 			isa = PBXGroup;
 			children = (
-				97AE031422B1799200A6D4E1 /* AppDelegate.swift */,
-				97AE031622B1799200A6D4E1 /* GameController.swift */,
-				977169C522B20C7D009D9DB6 /* TicCollectionViewController.swift */,
 				97AE031822B1799200A6D4E1 /* Main.storyboard */,
-				97AE032A22B1BC8200A6D4E1 /* ViewExtensions */,
-				97AE031B22B1799500A6D4E1 /* Assets.xcassets */,
-				97AE031D22B1799500A6D4E1 /* LaunchScreen.storyboard */,
-				97AE032022B1799500A6D4E1 /* Info.plist */,
+				977169CD22B30660009D9DB6 /* Model + Controller */,
+				977169CC22B3063E009D9DB6 /* View + Controller */,
+				977169CB22B305D7009D9DB6 /* Resources */,
 			);
 			path = GameProject;
 			sourceTree = "<group>";
@@ -76,7 +101,6 @@
 			isa = PBXGroup;
 			children = (
 				977169C922B22230009D9DB6 /* UIViewExtension.swift */,
-				977169C722B221C0009D9DB6 /* TickCollectionViewCell.swift */,
 			);
 			path = ViewExtensions;
 			sourceTree = "<group>";
@@ -153,7 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				977169CA22B22230009D9DB6 /* UIViewExtension.swift in Sources */,
-				977169C822B221C0009D9DB6 /* TickCollectionViewCell.swift in Sources */,
+				977169C822B221C0009D9DB6 /* TicCollectionViewCell.swift in Sources */,
 				97AE031722B1799200A6D4E1 /* GameController.swift in Sources */,
 				977169C622B20C7D009D9DB6 /* TicCollectionViewController.swift in Sources */,
 				97AE031522B1799200A6D4E1 /* AppDelegate.swift in Sources */,
