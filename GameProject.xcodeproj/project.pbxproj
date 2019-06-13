@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		977169C622B20C7D009D9DB6 /* TicCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977169C522B20C7D009D9DB6 /* TicCollectionViewController.swift */; };
+		977169C822B221C0009D9DB6 /* TickCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977169C722B221C0009D9DB6 /* TickCollectionViewCell.swift */; };
+		977169CA22B22230009D9DB6 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977169C922B22230009D9DB6 /* UIViewExtension.swift */; };
 		97AE031522B1799200A6D4E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE031422B1799200A6D4E1 /* AppDelegate.swift */; };
 		97AE031722B1799200A6D4E1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE031622B1799200A6D4E1 /* ViewController.swift */; };
 		97AE031A22B1799200A6D4E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97AE031822B1799200A6D4E1 /* Main.storyboard */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		977169C522B20C7D009D9DB6 /* TicCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicCollectionViewController.swift; sourceTree = "<group>"; };
+		977169C722B221C0009D9DB6 /* TickCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickCollectionViewCell.swift; sourceTree = "<group>"; };
+		977169C922B22230009D9DB6 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		97AE031122B1799200A6D4E1 /* GameProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97AE031422B1799200A6D4E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97AE031622B1799200A6D4E1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +64,7 @@
 			children = (
 				97AE031422B1799200A6D4E1 /* AppDelegate.swift */,
 				97AE031622B1799200A6D4E1 /* ViewController.swift */,
+				977169C522B20C7D009D9DB6 /* TicCollectionViewController.swift */,
 				97AE031822B1799200A6D4E1 /* Main.storyboard */,
 				97AE032A22B1BC8200A6D4E1 /* ViewExtensions */,
 				97AE031B22B1799500A6D4E1 /* Assets.xcassets */,
@@ -70,7 +77,9 @@
 		97AE032A22B1BC8200A6D4E1 /* ViewExtensions */ = {
 			isa = PBXGroup;
 			children = (
+				977169C922B22230009D9DB6 /* UIViewExtension.swift */,
 				97AE032822B1BC7600A6D4E1 /* TickButton.swift */,
+				977169C722B221C0009D9DB6 /* TickCollectionViewCell.swift */,
 			);
 			path = ViewExtensions;
 			sourceTree = "<group>";
@@ -146,7 +155,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				977169CA22B22230009D9DB6 /* UIViewExtension.swift in Sources */,
+				977169C822B221C0009D9DB6 /* TickCollectionViewCell.swift in Sources */,
 				97AE031722B1799200A6D4E1 /* ViewController.swift in Sources */,
+				977169C622B20C7D009D9DB6 /* TicCollectionViewController.swift in Sources */,
 				97AE032922B1BC7600A6D4E1 /* TickButton.swift in Sources */,
 				97AE031522B1799200A6D4E1 /* AppDelegate.swift in Sources */,
 			);
