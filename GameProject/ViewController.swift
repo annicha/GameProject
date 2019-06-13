@@ -75,6 +75,9 @@ class ViewController: UIViewController {
                 return true
             }
         } else {
+            if position == "b1" || position == "b3" || position == "a2" || position == "c2" {
+                return false
+            }
             for i in letterArray where i != String(letter!) {
                 if i == "b" {
                     continue
