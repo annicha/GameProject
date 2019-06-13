@@ -27,7 +27,6 @@ class TickCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var ticImageView: UIImageView!
     
     var positionLabel: String?
-    var isClaimed: Bool = false
     var delegate: TickCollectionViewCellDelegate?
     
     lazy var tickButton: TickButton = {
@@ -37,6 +36,7 @@ class TickCollectionViewCell: UICollectionViewCell {
     
     
     override func layoutSubviews() {
+        super.layoutSubviews()
         addSubview(tickButton)
         
         tickButton.anchor(top: self.topAnchor, bottom: self.bottomAnchor, leading: self.leadingAnchor, trailing: self.trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingLeading: 0, paddingTrailing: 0)
@@ -44,9 +44,7 @@ class TickCollectionViewCell: UICollectionViewCell {
     }
     
     @objc func tickButtonTapped(){
-        guard let positionLabel = self.positionLabel,
-            isClaimed == false else { return }
-        isClaimed = true
+        guard let positionLabel = self.positionLabel else { return }
         
         delegate?.updateDictionary(positionLabel: positionLabel)
         delegate?.checkWinner(positionLabel: positionLabel)
@@ -55,18 +53,15 @@ class TickCollectionViewCell: UICollectionViewCell {
     }
     
     func updateView(){
-        // check dictionary for that position whether it's nil
+
         guard let positionLabel = positionLabel else { return }
         
         let dicValue = ViewController.dic[positionLabel]
         
-        if dicValue == "" {
-            ticImageView.image = nil
-        } else if dicValue == "x" {
-            ticImageView.image = UIImage(named: "cross")
-        } else if dicValue == "o" {
-            ticImageView.image = UIImage(named: "circle-outline")
+        switch dicValue {
+        case "x": ticImageView.image = UIImage(named: "cross")
+        case "o": ticImageView.image = UIImage(named: "circle-outline")
+        default: ticImageView.image = nil
         }
     }
-    
 }

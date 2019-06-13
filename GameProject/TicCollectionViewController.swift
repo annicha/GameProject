@@ -12,7 +12,7 @@ class TicCollectionViewController: UIViewController {
 
     var playerTurnText: String = "x"
     
-    
+    @IBOutlet weak var playerTurnLabel: UILabel!
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet private weak var collectionView: UICollectionView!
     
@@ -29,23 +29,32 @@ class TicCollectionViewController: UIViewController {
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: width)
         collectionView.backgroundColor = .red
+        
+    }
+    
+    @IBAction func clearButtonTapped(_ sender: Any) {
+        resetGame()
     }
     
     func presentAlert() {
         let alert = UIAlertController(title: "Congrats!", message: "\(playerTurnText) won the game!", preferredStyle: .alert)
         let playAgain = UIAlertAction(title: "Play Again", style: .default) { (_) in
-            for (key, _) in ViewController.dic {
-                ViewController.dic[key] = ""
-                print(ViewController.dic)
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                    self.playerTurnText = "x"
-                }
-            }
+            self.resetGame()
         }
         
         alert.addAction(playAgain)
         present(alert, animated: true)
+    }
+    
+    func resetGame(){
+        for (key, _) in ViewController.dic {
+            ViewController.dic[key] = ""
+            print(ViewController.dic)
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+                self.playerTurnText = "x"
+            }
+        }
     }
 
 }
@@ -61,6 +70,8 @@ extension TicCollectionViewController: UICollectionViewDelegate, UICollectionVie
         cell.positionLabel = collectionData[indexPath.row]
         cell.backgroundColor = .black
         cell.ticImageView.image = nil
+        cell.ticImageView.anchor(top: cell.topAnchor, bottom: cell.bottomAnchor, leading: cell.leadingAnchor, trailing: cell.trailingAnchor, paddingTop: 14, paddingBottom: -14, paddingLeading: 14, paddingTrailing: -14, width: nil, height: nil)
+        
         return cell
     }
     
@@ -76,7 +87,6 @@ extension TicCollectionViewController: TickCollectionViewCellDelegate {
         updatePlayersTurnText()
         
         let checker = ViewController()
-        
         print("Horizontal: \(checker.checkHorizontal(position: positionLabel))")
         print("Vertical: \(checker.checkVertical(position: positionLabel))")
         print("Diagnal: \(checker.checkDiagonal(position: positionLabel))")
@@ -92,13 +102,11 @@ extension TicCollectionViewController: TickCollectionViewCellDelegate {
     
     func updatePlayersTurnText() {
         self.playerTurnText = ViewController.playerOneTurn == true ? "x" : "o"
-        print("It's now \(playerTurnText) turn.\n")
+        playerTurnLabel.text = "It's now \(playerTurnText.uppercased())'s turn."
     }
     
     func updateWinnerText() {
-        let winningPlayer: String = playerTurnText
         presentAlert()
-        print("\(winningPlayer) just won!")
     }
     
     func togglePlayerTurn() {
