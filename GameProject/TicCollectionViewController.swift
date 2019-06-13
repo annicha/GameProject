@@ -30,6 +30,23 @@ class TicCollectionViewController: UIViewController {
         layout.itemSize = CGSize(width: width, height: width)
         collectionView.backgroundColor = .red
     }
+    
+    func presentAlert() {
+        let alert = UIAlertController(title: "Congrats!", message: "\(playerTurnText) won the game!", preferredStyle: .alert)
+        let playAgain = UIAlertAction(title: "Play Again", style: .default) { (_) in
+            for (key, _) in ViewController.dic {
+                ViewController.dic[key] = ""
+                print(ViewController.dic)
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                    self.playerTurnText = "x"
+                }
+            }
+        }
+        
+        alert.addAction(playAgain)
+        present(alert, animated: true)
+    }
 
 }
 
@@ -43,6 +60,7 @@ extension TicCollectionViewController: UICollectionViewDelegate, UICollectionVie
         cell.delegate = self
         cell.positionLabel = collectionData[indexPath.row]
         cell.backgroundColor = .black
+        cell.ticImageView.image = nil
         return cell
     }
     
@@ -64,7 +82,7 @@ extension TicCollectionViewController: TickCollectionViewCellDelegate {
         print("Diagnal: \(checker.checkDiagonal(position: positionLabel))")
         print("Statement return: \(checker.checkHorizontal(position: positionLabel) || checker.checkHorizontal(position: positionLabel) || checker.checkDiagonal(position: positionLabel))")
 
-        if checker.checkHorizontal(position: positionLabel) || checker.checkHorizontal(position: positionLabel) || checker.checkDiagonal(position: positionLabel) {
+        if checker.checkHorizontal(position: positionLabel) || checker.checkVertical(position: positionLabel) || checker.checkDiagonal(position: positionLabel) {
             updateWinnerText()
         } else {
             togglePlayerTurn()
@@ -79,6 +97,7 @@ extension TicCollectionViewController: TickCollectionViewCellDelegate {
     
     func updateWinnerText() {
         let winningPlayer: String = playerTurnText
+        presentAlert()
         print("\(winningPlayer) just won!")
     }
     
