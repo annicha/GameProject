@@ -12,13 +12,13 @@ class ViewController: UIViewController {
     
     var hasWon: Bool = false
     
-    let dic = ["a1": "", "a2": "", "a3": "", "b1": "", "b2": "", "b3": "", "c1": "", "c2": "", "c3": ""]
+    static var dic = ["a1": "", "a2": "", "a3": "", "b1": "", "b2": "", "b3": "", "c1": "", "c2": "", "c3": ""]
     
     let numArray = ["1", "2", "3"]
     let letterArray = ["a", "b", "c"]
     
-    var playerOneTurn = true
-    var playerTwoTurn = false
+    static var playerOneTurn = true
+    static var playerTwoTurn = false
     
     @IBOutlet weak var aOne: UIButton!
     @IBOutlet weak var aTwo: UIButton!
@@ -32,8 +32,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        print("Anne is making change.")
     }
     
     func checkHorizontal(button: UIButton) -> Bool {
@@ -44,9 +42,9 @@ class ViewController: UIViewController {
             var stringNum = String(num!)
             stringNum.insert(Character(i), at: stringNum.startIndex)
             if check == "" {
-                check = dic[stringNum]!
+                check = ViewController.dic[stringNum]!
             } else {
-                let result = check == dic[stringNum]! ? true : false
+                let result = check == ViewController.dic[stringNum]! ? true : false
                 return result
             }
         }
@@ -61,9 +59,9 @@ class ViewController: UIViewController {
             var stringLetter = String(letter!)
             stringLetter.insert(Character(i), at: stringLetter.endIndex)
             if check == "" {
-                check = dic[stringLetter]!
+                check = ViewController.dic[stringLetter]!
             } else {
-                let result = check == dic[stringLetter]! ? true : false
+                let result = check == ViewController.dic[stringLetter]! ? true : false
                 return result
             }
         }
@@ -81,7 +79,7 @@ class ViewController: UIViewController {
                 for number in numArray where number != String(num!) && number != "2" {
                     var stringNum = String(letter!)
                     stringNum.insert(Character(number), at: stringNum.endIndex)
-                    let result = check == dic[stringNum]! ? true : false
+                    let result = check == ViewController.dic[stringNum]! ? true : false
                     if token == 2 {
                         return result
                     }
@@ -90,12 +88,12 @@ class ViewController: UIViewController {
         } else {
             for i in letterArray where i != String(letter!) {
                 if i == "b" {
-                    check = dic["b2"]!
+                    check = ViewController.dic["b2"]!
                 } else {
                     for number in numArray where number != String(num!) && number != "2" {
                         var stringNum = String(letter!)
                         stringNum.insert(Character(number), at: stringNum.endIndex)
-                        let result = check == dic[stringNum]! ? true : false
+                        let result = check == ViewController.dic[stringNum]! ? true : false
                         return result
                     }
                 }
@@ -103,10 +101,5 @@ class ViewController: UIViewController {
         }
         return false
     }
-    
-//        while hasWon == false {
-//        }
-
-    
 }
 
