@@ -1,5 +1,5 @@
 //
-//  TickCollectionViewCell.swift
+//  TicCollectionViewCell.swift
 //  GameProject
 //
 //  Created by Annicha Hanwilai on 6/13/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol TickCollectionViewCellDelegate {
+protocol TicCollectionViewCellDelegate {
     
     func checkWinner(positionLabel: String?)
     
@@ -22,14 +22,14 @@ protocol TickCollectionViewCellDelegate {
 }
 
 
-class TickCollectionViewCell: UICollectionViewCell {
+class TicCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var ticImageView: UIImageView!
     
     var positionLabel: String?
-    var delegate: TickCollectionViewCellDelegate?
+    var delegate: TicCollectionViewCellDelegate?
     
-    lazy var tickButton: UIButton = {
+    lazy var ticButton: UIButton = {
         let button = UIButton()
         return button
     }()
@@ -37,16 +37,16 @@ class TickCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        addSubview(tickButton)
+        addSubview(ticButton)
         
-        tickButton.anchor(top: self.topAnchor, bottom: self.bottomAnchor, leading: self.leadingAnchor, trailing: self.trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingLeading: 0, paddingTrailing: 0)
-        tickButton.addTarget(self, action: #selector(tickButtonTapped), for: .touchUpInside)
+        ticButton.anchor(top: self.topAnchor, bottom: self.bottomAnchor, leading: self.leadingAnchor, trailing: self.trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingLeading: 0, paddingTrailing: 0)
+        ticButton.addTarget(self, action: #selector(tickButtonTapped), for: .touchUpInside)
     }
     
     @objc func tickButtonTapped(){
         
         guard let positionLabel = self.positionLabel,
-            ViewController.dic[positionLabel] == "" else { return }
+            GameControler.dic[positionLabel] == "" else { return }
         
         delegate?.updateDictionary(positionLabel: positionLabel)
         delegate?.checkWinner(positionLabel: positionLabel)
@@ -58,7 +58,7 @@ class TickCollectionViewCell: UICollectionViewCell {
 
         guard let positionLabel = positionLabel else { return }
         
-        let dicValue = ViewController.dic[positionLabel]
+        let dicValue = GameControler.dic[positionLabel]
         
         switch dicValue {
         case "x": ticImageView.image = UIImage(named: "cross")

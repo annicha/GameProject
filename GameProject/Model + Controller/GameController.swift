@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  GameController.swift
 //  GameProject
 //
 //  Created by Annicha Hanwilai on 6/12/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class GameControler: UIViewController {
         
     static var hasWon: Bool = false
     
@@ -32,11 +32,11 @@ class ViewController: UIViewController {
             var tag = String(num!)
             tag.insert(Character(i), at: tag.startIndex)
             if check == "" {
-                check = ViewController.dic[tag]!
+                check = GameControler.dic[tag]!
             } else {
-                let result = check == ViewController.dic[tag]! ? true : false
+                let result = check == GameControler.dic[tag]! ? true : false
                 if result {
-                    return check == ViewController.dic[position] ? true : false
+                    return check == GameControler.dic[position] ? true : false
                 }
                 return result
             }
@@ -52,11 +52,11 @@ class ViewController: UIViewController {
             var tag = String(letter!)
             tag.insert(Character(i), at: tag.endIndex)
             if check == "" {
-                check = ViewController.dic[tag]!
+                check = GameControler.dic[tag]!
             } else {
-                let result = check == ViewController.dic[tag]! ? true : false
+                let result = check == GameControler.dic[tag]! ? true : false
                 if result {
-                    return check == ViewController.dic[position] ? true : false
+                    return check == GameControler.dic[position] ? true : false
                 }
                 return result
             }
@@ -67,11 +67,11 @@ class ViewController: UIViewController {
     func checkDiagonal(position: String) -> Bool {
         let letter = position.first
         let num = position.last
-        let check = ViewController.dic["b2"]
+        let check = GameControler.dic["b2"]
         if position == "b2" {
-            if ViewController.dic["a1"] == ViewController.dic["c3"] && ViewController.dic["a1"] == ViewController.dic["b2"] {
+            if GameControler.dic["a1"] == GameControler.dic["c3"] && GameControler.dic["a1"] == GameControler.dic["b2"] {
                 return true
-            } else if ViewController.dic["a3"] == ViewController.dic["c1"] && ViewController.dic["a3"] == ViewController.dic["b2"] {
+            } else if GameControler.dic["a3"] == GameControler.dic["c1"] && GameControler.dic["a3"] == GameControler.dic["b2"] {
                 return true
             }
         } else {
@@ -85,9 +85,9 @@ class ViewController: UIViewController {
                     for number in numArray where number != String(num!) && number != "2" {
                         var tag = String(i)
                         tag.insert(Character(number), at: tag.endIndex)
-                        let result = check == ViewController.dic[tag]! ? true : false
+                        let result = check == GameControler.dic[tag]! ? true : false
                         if result {
-                            return check == ViewController.dic[position] ? true : false
+                            return check == GameControler.dic[position] ? true : false
                         }
                         return result
                     }

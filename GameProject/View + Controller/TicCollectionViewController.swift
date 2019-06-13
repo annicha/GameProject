@@ -17,7 +17,7 @@ class TicCollectionViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     
     let collectionData = ["a1", "b1", "c1", "a2", "b2", "c2", "a3", "b3", "c3"]
-    var turnCount: Int = ViewController.dic.count
+    var turnCount: Int = GameControler.dic.count
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,14 +50,13 @@ class TicCollectionViewController: UIViewController {
     
     func resetGame(){
         
-        ViewController.playerOneTurn = true
-        ViewController.playerTwoTurn = false
-        self.turnCount = ViewController.dic.count
+        GameControler.playerOneTurn = true
+        GameControler.playerTwoTurn = false
+        self.turnCount = GameControler.dic.count
         updatePlayersTurnText()
         
-        for (key, _) in ViewController.dic {
-            ViewController.dic[key] = ""
-            print(ViewController.dic)
+        for (key, _) in GameControler.dic {
+            GameControler.dic[key] = ""
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
                 self.playerTurnText = "x"
@@ -73,7 +72,7 @@ extension TicCollectionViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ticCell", for: indexPath) as? TickCollectionViewCell else {return UICollectionViewCell()}
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ticCell", for: indexPath) as? TicCollectionViewCell else {return UICollectionViewCell()}
         cell.delegate = self
         cell.positionLabel = collectionData[indexPath.row]
         cell.backgroundColor = .black
@@ -86,13 +85,13 @@ extension TicCollectionViewController: UICollectionViewDelegate, UICollectionVie
     
 }
 
-extension TicCollectionViewController: TickCollectionViewCellDelegate {
+extension TicCollectionViewController: TicCollectionViewCellDelegate {
     func checkWinner(positionLabel: String?) {
         guard let positionLabel = positionLabel,
-            !ViewController.hasWon
+            !GameControler.hasWon
             else { print("can't find position label or someone has won"); return }
         
-        let checker = ViewController()
+        let checker = GameControler()
         print("\n\nChecking\nHorizontal: \(checker.checkHorizontal(position: positionLabel))")
         print("Vertical: \(checker.checkVertical(position: positionLabel))")
         print("Diagnal: \(checker.checkDiagonal(position: positionLabel))")
@@ -110,12 +109,12 @@ extension TicCollectionViewController: TickCollectionViewCellDelegate {
         print("\nTurn count: \(turnCount)")
         
         if turnCount > 0 {
-            self.playerTurnText = ViewController.playerOneTurn == true ? "x" : "o"
+            self.playerTurnText = GameControler.playerOneTurn == true ? "x" : "o"
             playerTurnLabel.text = "It's now \(playerTurnText.uppercased())'s turn."
             turnCount -= 1
         } else {
             playerTurnLabel.text = "It's a tie!"
-            turnCount = ViewController.dic.count
+            turnCount = GameControler.dic.count
         }
     }
     
@@ -124,12 +123,12 @@ extension TicCollectionViewController: TickCollectionViewCellDelegate {
     }
     
     func togglePlayerTurn() {
-        ViewController.playerOneTurn = !ViewController.playerOneTurn
-        ViewController.playerTwoTurn = !ViewController.playerTwoTurn
+        GameControler.playerOneTurn = !GameControler.playerOneTurn
+        GameControler.playerTwoTurn = !GameControler.playerTwoTurn
     }
     
     func updateDictionary(positionLabel: String){
-        ViewController.dic[positionLabel] = playerTurnText
+        GameControler.dic[positionLabel] = playerTurnText
     }
 
 }
