@@ -24,6 +24,8 @@ protocol TickCollectionViewCellDelegate {
 
 class TickCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var ticImageView: UIImageView!
+    
     var positionLabel: String?
     var isClaimed: Bool = false
     var delegate: TickCollectionViewCellDelegate?
@@ -45,9 +47,26 @@ class TickCollectionViewCell: UICollectionViewCell {
         guard let positionLabel = self.positionLabel,
             isClaimed == false else { return }
         isClaimed = true
+        
         delegate?.updateDictionary(positionLabel: positionLabel)
         delegate?.checkWinner(positionLabel: positionLabel)
         
+        updateView()
+    }
+    
+    func updateView(){
+        // check dictionary for that position whether it's nil
+        guard let positionLabel = positionLabel else { return }
+        
+        let dicValue = ViewController.dic[positionLabel]
+        
+        if dicValue == "" {
+            ticImageView.image = nil
+        } else if dicValue == "x" {
+            ticImageView.image = UIImage(named: "cross")
+        } else if dicValue == "o" {
+            ticImageView.image = UIImage(named: "circle-outline")
+        }
     }
     
 }
