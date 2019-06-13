@@ -9,8 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
-    var hasWon: Bool = false
+        
+    static var hasWon: Bool = false
     
     static var dic = ["a1": "", "a2": "", "a3": "", "b1": "", "b2": "", "b3": "", "c1": "", "c2": "", "c3": ""]
     
@@ -19,16 +19,6 @@ class ViewController: UIViewController {
     
     static var playerOneTurn = true
     static var playerTwoTurn = false
-    
-    @IBOutlet weak var aOne: UIButton!
-    @IBOutlet weak var aTwo: UIButton!
-    @IBOutlet weak var aThree: UIButton!
-    @IBOutlet weak var bOne: UIButton!
-    @IBOutlet weak var bTwo: UIButton!
-    @IBOutlet weak var bThree: UIButton!
-    @IBOutlet weak var cOne: UIButton!
-    @IBOutlet weak var cTwo: UIButton!
-    @IBOutlet weak var cThree: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -10,10 +10,13 @@ import UIKit
 
 class TicCollectionViewController: UIViewController {
 
+    var playerTurnText: String = "x"
+    
+    
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    let collectionData = ["a1", "a2", "a3", "b1", "b2", "b3", "c1", "c2", "c3"]
+    let collectionData = ["a1", "b1", "c1", "a2", "b2", "c2", "a3", "b3", "c3"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +40,7 @@ extension TicCollectionViewController: UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ticCell", for: indexPath) as? TickCollectionViewCell else {return UICollectionViewCell()}
+        cell.delegate = self
         cell.positionLabel = collectionData[indexPath.row]
         cell.backgroundColor = .black
         return cell
@@ -47,21 +51,40 @@ extension TicCollectionViewController: UICollectionViewDelegate, UICollectionVie
 
 extension TicCollectionViewController: TickCollectionViewCellDelegate {
     func checkWinner(positionLabel: String?) {
+        guard let positionLabel = positionLabel else { print("can't find position label"); return }
+        
         let checker = ViewController()
         
-        if checker.checkHorizontal(position: self.positionLabel) || checker.checkHorizontal(position: self.positionLabel) || checker.checkDiagonal(position: self.positionLabel) {
+        print("Horizontal: \(checker.checkHorizontal(position: positionLabel))")
+        print("Vertical: \(checker.checkVertical(position: positionLabel))")
+        print("Diagnal: \(checker.checkDiagonal(position: positionLabel))")
+        print("Statement return: \(checker.checkHorizontal(position: positionLabel) || checker.checkHorizontal(position: positionLabel) || checker.checkDiagonal(position: positionLabel))")
+
+        if checker.checkHorizontal(position: positionLabel) || checker.checkHorizontal(position: positionLabel) || checker.checkDiagonal(position: positionLabel) {
             updateWinnerText()
         } else {
+            togglePlayerTurn()
             updatePlayersTurnText()
         }
     }
     
     func updatePlayersTurnText() {
-        <#code#>
+        self.playerTurnText = ViewController.playerOneTurn == true ? "x" : "o"
+        print("It's now \(playerTurnText) turn.\n")
     }
     
     func updateWinnerText() {
-        <#code#>
+        let winningPlayer: String = playerTurnText
+        print("\(winningPlayer) just won!")
+    }
+    
+    func togglePlayerTurn() {
+        ViewController.playerOneTurn = !ViewController.playerOneTurn
+        ViewController.playerTwoTurn = !ViewController.playerTwoTurn
+    }
+    
+    func updateDictionary(positionLabel: String){
+        ViewController.dic[positionLabel] = playerTurnText
     }
 
 }

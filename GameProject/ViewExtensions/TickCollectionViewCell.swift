@@ -14,7 +14,11 @@ protocol TickCollectionViewCellDelegate {
     
     func updatePlayersTurnText()
     
+    func togglePlayerTurn()
+    
     func updateWinnerText()
+    
+    func updateDictionary(positionLabel: String)
 }
 
 
@@ -22,6 +26,7 @@ class TickCollectionViewCell: UICollectionViewCell {
     
     var positionLabel: String?
     var isClaimed: Bool = false
+    var delegate: TickCollectionViewCellDelegate?
     
     lazy var tickButton: TickButton = {
         let button = TickButton()
@@ -37,12 +42,11 @@ class TickCollectionViewCell: UICollectionViewCell {
     }
     
     @objc func tickButtonTapped(){
-        guard let positionLabel = positionLabel,
+        guard let positionLabel = self.positionLabel,
             isClaimed == false else { return }
-        
-        print("Tic button at \(positionLabel) tapped")
-        
         isClaimed = true
+        delegate?.updateDictionary(positionLabel: positionLabel)
+        delegate?.checkWinner(positionLabel: positionLabel)
         
     }
     
