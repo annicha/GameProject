@@ -61,6 +61,10 @@ extension TicCollectionViewController: UICollectionViewDelegate, UICollectionVie
         cell.positionLabel = collectionData[indexPath.row]
         cell.backgroundColor = .black
         cell.ticImageView.image = nil
+        
+//        let cellHeight = cell.frame.size.width
+        cell.ticImageView.anchor(top: cell.topAnchor, bottom: cell.bottomAnchor, leading: cell.leadingAnchor, trailing: cell.trailingAnchor, paddingTop: 14, paddingBottom: -14, paddingLeading: 14, paddingTrailing: -14, width: nil, height: nil)
+        
         return cell
     }
     
@@ -76,7 +80,6 @@ extension TicCollectionViewController: TickCollectionViewCellDelegate {
         updatePlayersTurnText()
         
         let checker = ViewController()
-        
         print("Horizontal: \(checker.checkHorizontal(position: positionLabel))")
         print("Vertical: \(checker.checkVertical(position: positionLabel))")
         print("Diagnal: \(checker.checkDiagonal(position: positionLabel))")

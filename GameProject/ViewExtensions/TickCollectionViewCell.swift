@@ -36,6 +36,7 @@ class TickCollectionViewCell: UICollectionViewCell {
     
     
     override func layoutSubviews() {
+        super.layoutSubviews()
         addSubview(tickButton)
         
         tickButton.anchor(top: self.topAnchor, bottom: self.bottomAnchor, leading: self.leadingAnchor, trailing: self.trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingLeading: 0, paddingTrailing: 0)
