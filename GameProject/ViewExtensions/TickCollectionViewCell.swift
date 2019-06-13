@@ -16,7 +16,7 @@ protocol TickCollectionViewCellDelegate {
     
     func togglePlayerTurn()
     
-    func updateWinnerText()
+    func alertWinner()
     
     func updateDictionary(positionLabel: String)
 }
@@ -44,7 +44,9 @@ class TickCollectionViewCell: UICollectionViewCell {
     }
     
     @objc func tickButtonTapped(){
-        guard let positionLabel = self.positionLabel else { return }
+        
+        guard let positionLabel = self.positionLabel,
+            ViewController.dic[positionLabel] == "" else { return }
         
         delegate?.updateDictionary(positionLabel: positionLabel)
         delegate?.checkWinner(positionLabel: positionLabel)

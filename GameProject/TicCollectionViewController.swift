@@ -17,6 +17,7 @@ class TicCollectionViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     
     let collectionData = ["a1", "b1", "c1", "a2", "b2", "c2", "a3", "b3", "c3"]
+    var turnCount: Int = ViewController.dic.count
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +30,8 @@ class TicCollectionViewController: UIViewController {
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: width)
         collectionView.backgroundColor = .red
-        
+        updatePlayersTurnText()
+
     }
     
     @IBAction func clearButtonTapped(_ sender: Any) {
@@ -55,6 +57,9 @@ class TicCollectionViewController: UIViewController {
                 self.playerTurnText = "x"
             }
         }
+        
+        self.turnCount = ViewController.dic.count
+        updatePlayersTurnText()
     }
 
 }
@@ -84,16 +89,14 @@ extension TicCollectionViewController: TickCollectionViewCellDelegate {
             !ViewController.hasWon
             else { print("can't find position label or someone has won"); return }
         
-        updatePlayersTurnText()
-        
         let checker = ViewController()
-        print("Horizontal: \(checker.checkHorizontal(position: positionLabel))")
+        print("\n\nChecking\nHorizontal: \(checker.checkHorizontal(position: positionLabel))")
         print("Vertical: \(checker.checkVertical(position: positionLabel))")
         print("Diagnal: \(checker.checkDiagonal(position: positionLabel))")
         print("Statement return: \(checker.checkHorizontal(position: positionLabel) || checker.checkHorizontal(position: positionLabel) || checker.checkDiagonal(position: positionLabel))")
 
         if checker.checkHorizontal(position: positionLabel) || checker.checkVertical(position: positionLabel) || checker.checkDiagonal(position: positionLabel) {
-            updateWinnerText()
+            alertWinner()
         } else {
             togglePlayerTurn()
             updatePlayersTurnText()
@@ -101,11 +104,19 @@ extension TicCollectionViewController: TickCollectionViewCellDelegate {
     }
     
     func updatePlayersTurnText() {
-        self.playerTurnText = ViewController.playerOneTurn == true ? "x" : "o"
-        playerTurnLabel.text = "It's now \(playerTurnText.uppercased())'s turn."
+        print("\nTurn count: \(turnCount)")
+        
+        if turnCount > 0 {
+            self.playerTurnText = ViewController.playerOneTurn == true ? "x" : "o"
+            playerTurnLabel.text = "It's now \(playerTurnText.uppercased())'s turn."
+            turnCount -= 1
+        } else {
+            playerTurnLabel.text = "It's a tie!"
+            turnCount = ViewController.dic.count
+        }
     }
     
-    func updateWinnerText() {
+    func alertWinner() {
         presentAlert()
     }
     
