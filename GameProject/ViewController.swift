@@ -67,7 +67,7 @@ class ViewController: UIViewController {
     func checkDiagonal(position: String) -> Bool {
         let letter = position.first
         let num = position.last
-        var check = ""
+        let check = ViewController.dic["b2"]
         if position == "b2" {
             if ViewController.dic["a1"] == ViewController.dic["c3"] && ViewController.dic["a1"] == ViewController.dic["b2"] {
                 return true
@@ -77,7 +77,7 @@ class ViewController: UIViewController {
         } else {
             for i in letterArray where i != String(letter!) {
                 if i == "b" {
-                    check = ViewController.dic["b2"]!
+                    continue
                 } else {
                     for number in numArray where number != String(num!) && number != "2" {
                         var tag = String(i)
