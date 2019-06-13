@@ -8,6 +8,16 @@
 
 import UIKit
 
+protocol TickCollectionViewCellDelegate {
+    
+    func checkWinner(positionLabel: String?)
+    
+    func updatePlayersTurnText()
+    
+    func updateWinnerText()
+}
+
+
 class TickCollectionViewCell: UICollectionViewCell {
     
     var positionLabel: String?
@@ -27,7 +37,13 @@ class TickCollectionViewCell: UICollectionViewCell {
     }
     
     @objc func tickButtonTapped(){
-        guard let positionLabel = positionLabel else {return}
+        guard let positionLabel = positionLabel,
+            isClaimed == false else { return }
+        
         print("Tic button at \(positionLabel) tapped")
+        
+        isClaimed = true
+        
     }
+    
 }

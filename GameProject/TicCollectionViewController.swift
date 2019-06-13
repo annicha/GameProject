@@ -44,3 +44,24 @@ extension TicCollectionViewController: UICollectionViewDelegate, UICollectionVie
     
     
 }
+
+extension TicCollectionViewController: TickCollectionViewCellDelegate {
+    func checkWinner(positionLabel: String?) {
+        let checker = ViewController()
+        
+        if checker.checkHorizontal(position: self.positionLabel) || checker.checkHorizontal(position: self.positionLabel) || checker.checkDiagonal(position: self.positionLabel) {
+            updateWinnerText()
+        } else {
+            updatePlayersTurnText()
+        }
+    }
+    
+    func updatePlayersTurnText() {
+        <#code#>
+    }
+    
+    func updateWinnerText() {
+        <#code#>
+    }
+
+}
