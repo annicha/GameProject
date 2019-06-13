@@ -57,7 +57,6 @@ class TicCollectionViewController: UIViewController {
         
         for (key, _) in ViewController.dic {
             ViewController.dic[key] = ""
-            print(ViewController.dic)
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
                 self.playerTurnText = "x"
